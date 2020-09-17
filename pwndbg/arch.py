@@ -29,6 +29,14 @@ def fix_arch(arch):
     if 'arm' in arch:
         return 'armcm' if '-m' in arch else 'arm'
 
+    if 'riscv' in arch:
+        if 'rv32' in arch:
+            return 'riscv32'
+        elif 'rv64' in arch:
+            return 'riscv64'
+        elif 'rv128' in arch:
+            return 'riscv128'
+
     return arch
 
 @pwndbg.events.start
