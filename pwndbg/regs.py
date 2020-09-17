@@ -263,21 +263,21 @@ mips = RegisterSet( frame   = 'fp',
 # f18–27    => fs2–11 (FP saved registers)
 # f28–31    => ft8–11 (FP temporaries)
 riscv = RegisterSet( pc      = 'pc',
-                     frame   = 'fp'
+                     frame   = 'fp',
                      stack   = 'sp',
                      retaddr = 'ra',
-                     gpr     = ('zero', ) \
-                               + ('ra', 'sp', 'gp', 'tp') \
-                               + ('t0', 't1', 't2', 'fp', 's1') \
-                               + tuple('a%i' % i for i in range(8)) \
-                               + tuple('s%i' % i for i in range(2, 12)) \
-                               + tuple('t%i' % i for i in range(3, 7)) \
-                               + tuple('ft%i' % i for i in range(8)) \
-                               + ('fs0', 'fs1', 'fa0', 'fa1') \
-                               + tuple('fa%i' % i for i in range(2, 8)) \
-                               + tuple('fs%i' % i for i in range(2, 12)) \
+                     gpr     = ('zero', )
+                               + ('ra', 'sp', 'gp', 'tp', )
+                               + ('t0', 't1', 't2', 'fp', 's1', )
+                               + tuple('a%i' % i for i in range(8))
+                               + tuple('s%i' % i for i in range(2, 12))
+                               + tuple('t%i' % i for i in range(3, 7))
+                               + tuple('ft%i' % i for i in range(8))
+                               + ('fs0', 'fs1', 'fa0', 'fa1', )
+                               + tuple('fa%i' % i for i in range(2, 8))
+                               + tuple('fs%i' % i for i in range(2, 12))
                                + tuple('fs%i' % i for i in range(2, 12)),
-                     retval  = ('a0', 'a1'))
+                     retval  = ('a0', 'a1', ))
 
 arch_to_regs = {
     'i386': i386,
