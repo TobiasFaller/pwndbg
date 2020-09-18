@@ -276,7 +276,7 @@ riscv = RegisterSet( pc      = 'pc',
                                + ('fs0', 'fs1', 'fa0', 'fa1', )
                                + tuple('fa%i' % i for i in range(2, 8))
                                + tuple('fs%i' % i for i in range(2, 12))
-                               + tuple('fs%i' % i for i in range(2, 12)),
+                               + tuple('ft%i' % i for i in range(8, 12)),
                      retval  = ('a0', 'a1', 'fa0', 'fa1', ),
                      args    = tuple('a%i' % i for i in range(8))
                                + tuple('fa%i' % i for i in range(8)))
