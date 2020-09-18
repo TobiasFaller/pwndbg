@@ -32,6 +32,9 @@ CapstoneArch = {
     'powerpc': CS_ARCH_PPC,
     'mips': CS_ARCH_MIPS,
     'sparc': CS_ARCH_SPARC,
+    'riscv32': CS_ARCH_RISCV,
+    'riscv64': CS_ARCH_RISCV,
+    'riscv128': CS_ARCH_RISCV,
 }
 
 CapstoneEndian = {
@@ -50,9 +53,12 @@ CapstoneMode = {
 #
 # This allows us to consistently disassemble backward.
 VariableInstructionSizeMax = {
-    'i386':   16,
-    'x86-64': 16,
-    'mips':   8,
+    'i386':     16,
+    'x86-64':   16,
+    'mips':     8,
+    'riscv32':  8,
+    'riscv64':  16,
+    'riscv128': 32
 }
 
 backward_cache = collections.defaultdict(lambda: None)
@@ -84,7 +90,13 @@ def get_disassembler(pc):
             extra = CS_MODE_V9
         else:
             # The ptrsize base modes cause capstone.CsError: Invalid mode (CS_ERR_MODE)
-            extra = 0 
+            extra = 0
+    elif pwndbg.arch.current == 'riscv32':
+        extra = CS_MODE_RISCV32 | CS_MODE_RISCVC
+    elif pwndbg.arch.current == 'riscv64':
+        extra = CS_MODE_RISCV64 | CS_MODE_RISCVC
+    elif pwndbg.arch.current == 'riscv128':
+        extra = CS_MODE_RISCV128 | CS_MODE_RISCVC
     else:
         extra = None
 
