@@ -266,8 +266,7 @@ riscv = RegisterSet( pc      = 'pc',
                      frame   = 'fp',
                      stack   = 'sp',
                      retaddr = 'ra',
-                     gpr     = ('zero', )
-                               + ('ra', 'sp', 'gp', 'tp', )
+                     gpr     = ('ra', 'gp', 'tp', )
                                + ('t0', 't1', 't2', 'fp', 's1', )
                                + tuple('a%i' % i for i in range(8))
                                + tuple('s%i' % i for i in range(2, 12))
