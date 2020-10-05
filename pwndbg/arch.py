@@ -36,6 +36,8 @@ def fix_arch(arch):
             return 'riscv64'
         elif 'rv128' in arch:
             return 'riscv128'
+        else:
+            return 'riscv64'
 
     return arch
 
